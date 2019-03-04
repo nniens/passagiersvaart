@@ -30,7 +30,7 @@
     map.setView([52.3614, 4.8783], 12)
     
 // Add style
-var geojsonMarkerOptions = {
+var style_openaf = new geojsonMarkerOptions = {
     radius: 6,
     fillColor: "#003b80",
     color: "#003b80",
@@ -54,7 +54,7 @@ function onEachFeature(feature, layer) {
         L.geoJSON(geojson, {
             pointToLayer: function (feature, latlng) {
                 var marker = L.circleMarker(latlng, geojsonMarkerOptions);
-                marker.bindPopup(feature.properties.Type);
+                marker.bindPopup(feature.properties.onEachFeature);
                 return marker;  
             }
         }).addTo(map)
