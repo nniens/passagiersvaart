@@ -44,7 +44,7 @@ var myStyle = {
         L.geoJSON(geojson, {
             pointToLayer: function(feature,latlng){
             var marker = L.marker([51.5, -0.09])
-        }).addTo(map)
+        }}).addTo(map)
       }).catch(function(err) {
         console.error(err)
       })
