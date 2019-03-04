@@ -23,7 +23,7 @@
 // Add background map
     var backgroundLayer = new L.tileLayer('https://t1.data.amsterdam.nl/topo_wm_zw/{z}/{x}/{y}.png', {
       maxZoom: 19,
-      minZoom: 10
+      minZoom: 12
     }).addTo(map)
 
 // Set view coordinates and zoom level
@@ -42,7 +42,8 @@ var myStyle = {
         return response.json()
       }).then(function(geojson) {
         L.geoJSON(geojson, {
-            style: myStyle
+            pointToLayer: function(feature,latlng){
+            var marker = L.marker([51.5, -0.09])
         }).addTo(map)
       }).catch(function(err) {
         console.error(err)
