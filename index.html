@@ -38,14 +38,13 @@ var geojsonMarkerOptions = {
     opacity: 1,
     fillOpacity: 0.5
 };
-// Fuction to show features in geosjon
+// Function to show features in geosjon
 function onEachFeature(feature, layer) {
-			var popupContent = "<p>I started out as a GeoJSON " +
-					feature.geometry.type + ", but now I'm a Leaflet vector!</p>";
-			if (feature.properties && feature.properties.popupContent) {
-				popupContent += feature.properties.popupContent;
-			}
-			layer.bindPopup(popupContent);
+    // does this feature have a property named popupContent?
+    if (feature.properties && feature.properties.popupContent) {
+        layer.bindPopup(feature.properties.popupContent);
+    }
+}
 
 // Add geojson 'op- en afstapplaatsen'
     fetch('https://api.data.amsterdam.nl/dcatd/datasets/hr5OD_Xsn6ri8w/purls/1')
@@ -53,13 +52,11 @@ function onEachFeature(feature, layer) {
         return response.json()
       }).then(function(geojson) {
         L.geoJSON(geojson, {
-            style: function (feature) {
-				return feature.properties && feature.properties.style;
-			},
-			onEachFeature: onEachFeature,
             pointToLayer: function (feature, latlng) {
-                return L.circleMarker(latlng, geojsonMarkerOptions);
-            },
+                var marker = L.circleMarker(latlng, geojsonMarkerOptions);
+                marker.bindPopup(feature.properties.Type);
+                return marker;  
+            }
         }).addTo(map)
       }).catch(function(err) {
         console.error(err)
