@@ -54,8 +54,14 @@ function onEachFeature(feature, layer) {
         L.geoJSON(geojson, {
             pointToLayer: function (feature, latlng) {
                 var marker = L.circleMarker(latlng, geojsonMarkerOptions_openaf);
-                marker.bindPopup(feature.properties.Type);
-                return marker;  
+                //marker.bindPopup(feature.properties.Type);
+                return marker;}  
+            onEachFeature: function (feature, layer) {
+                var popupcontent = [];
+                for (var prop in feature.properties) {
+                    popupcontent.push(prop + ": " + feature.properties[prop]);
+                }
+                layer.bindPopup(popupcontent.join("<br />"));
             }
         }).addTo(map)
       }).catch(function(err) {
