@@ -20,18 +20,30 @@
   <script>
     var map = new L.Map('map')
 
+// Add background map
     var backgroundLayer = new L.tileLayer('https://t1.data.amsterdam.nl/topo_wm_zw/{z}/{x}/{y}.png', {
       maxZoom: 19,
       minZoom: 10
     }).addTo(map)
 
+// Set view coordinates and zoom level
     map.setView([52.360, 4.915], 16)
+    
+// Add style
+var myStyle = {
+    "color": "#ff7800",
+    "weight": 5,
+    "opacity": 0.65
+};
 
+// Add geojson 'op- en afstapplaatsen'
     fetch('https://api.data.amsterdam.nl/dcatd/datasets/hr5OD_Xsn6ri8w/purls/1')
       .then(function(response) {
         return response.json()
       }).then(function(geojson) {
-        L.geoJSON(geojson).addTo(map)
+        L.geoJSON(geojson, {
+            style: myStyle
+        }).addTo(map)
       }).catch(function(err) {
         console.error(err)
       })
