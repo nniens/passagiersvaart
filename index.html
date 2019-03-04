@@ -47,8 +47,8 @@ var geojsonMarkerOptions = {
         L.geoJSON(geojson, {
             pointToLayer: function (feature, latlng) {
                 return L.circleMarker(latlng, geojsonMarkerOptions);
-            }, {
-            onEachFeature: onEachFeature}
+            },
+            onEachFeature: onEachFeature
         }).addTo(map)
       }).catch(function(err) {
         console.error(err)
