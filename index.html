@@ -73,7 +73,7 @@ function onEachFeature(feature, layer) {
         L.geoJSON(geojson, {
             pointToLayer: function (feature, latlng) {
                 var marker = L.circleMarker(latlng, geojsonMarkerOptions_openaf);
-                marker.bindPopup(feature.properties.Type);
+                marker.bindPopup(feature.properties.Type,feature.properties.Naam);
                 return marker;}  
             // onEachFeature: function (feature, layer) {
             //     var popupcontent = [];
@@ -115,7 +115,10 @@ fetch('https://api.data.amsterdam.nl/dcatd/datasets/hr5OD_Xsn6ri8w/purls/3')
         }).addTo(map)
       }).catch(function(err) {
         console.error(err)
-      })            
+      })  
+
+// add: all properties including label (! some properties have spaces in label name)
+// cluster markers                
   </script>
 </body>
 </html>
