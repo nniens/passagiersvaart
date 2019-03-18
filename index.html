@@ -97,18 +97,11 @@ fetch('https://api.data.amsterdam.nl/dcatd/datasets/hr5OD_Xsn6ri8w/purls/2')
                 var marker = L.circleMarker(latlng, geojsonMarkerOptions_ligplaats);
                 marker.bindPopup(feature.properties.Locatie);
                 return marker;}  
-<<<<<<< HEAD
-<<<<<<< HEAD
         });
-        var clusters = new L.markerClusterGroup();
+        var clusters = L.markerClusterGroup();
         clusters.addLayer(ligplaats);
         map.addLayer(clusters);
-=======
         }).addTo(map)
->>>>>>> parent of 213529b... add clustering
-=======
-        }).addTo(map)
->>>>>>> parent of 213529b... add clustering
       }).catch(function(err) {
         console.error(err)
       })
