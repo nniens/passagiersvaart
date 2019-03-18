@@ -100,7 +100,7 @@ fetch('https://api.data.amsterdam.nl/dcatd/datasets/hr5OD_Xsn6ri8w/purls/2')
                 marker.bindPopup(feature.properties.Locatie);
                 return marker;}  
         });
-        var clusters = L.markerClusterGroup();
+        var clusters = new L.markerClusterGroup();
         clusters.addLayer(ligplaats);
         map.addLayer(clusters);
       }).catch(function(err) {
