@@ -75,7 +75,7 @@ function onEachFeature(feature, layer) {
         L.geoJSON(geojson, {
             pointToLayer: function (feature, latlng) {
                 var marker = L.circleMarker(latlng, geojsonMarkerOptions_openaf);
-                marker.bindPopup(feature.properties.Type,feature.properties.Naam);
+                marker.bindPopup(feature.properties.Type + "</strong><br/>" + feature.properties.Locatie);
                 return marker;}  
             // onEachFeature: function (feature, layer) {
             //     var popupcontent = [];
