@@ -101,7 +101,6 @@ fetch('https://api.data.amsterdam.nl/dcatd/datasets/hr5OD_Xsn6ri8w/purls/2')
         var clusters = L.markerClusterGroup();
         clusters.addLayer(ligplaats);
         map.addLayer(clusters);
-        }).addTo(map)
       }).catch(function(err) {
         console.error(err)
       })
