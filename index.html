@@ -109,8 +109,8 @@ fetch('https://api.data.amsterdam.nl/dcatd/datasets/hr5OD_Xsn6ri8w/purls/2')
       
 // Add geojson 'Jachthaven'
 fetch('https://api.data.amsterdam.nl/dcatd/datasets/hr5OD_Xsn6ri8w/purls/3')
-      .then(function(response) {
-        return response.json()
+      .then(function(resp) {
+        return resp.json()
       }).then(function(geojson) {
         L.geoJSON(geojson, {
             pointToLayer: function (feature, latlng) {
