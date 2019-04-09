@@ -113,15 +113,33 @@ fetch('https://api.data.amsterdam.nl/dcatd/datasets/hr5OD_Xsn6ri8w/purls/3')
       .then(function(response) {
         return response.json()
       }).then(function(geojson) {
-        L.geoJSON(geojson, {
+        var jacht = L.geoJSON(geojson, {
             pointToLayer: function (feature, latlng) {
                 var marker = L.circleMarker(latlng, geojsonMarkerOptions_jachthaven);
                 marker.bindPopup(feature.properties.Naam);
                 return marker;}  
-        }).addTo(map)
+        });
+        var clusters = L.markerClusterGroup();
+        clusters.addLayer(jacht);
+        map.addLayer(clusters);
       }).catch(function(err) {
         console.error(err)
       })  
+
+// // Add geojson 'Jachthaven'
+// fetch('https://api.data.amsterdam.nl/dcatd/datasets/hr5OD_Xsn6ri8w/purls/3')
+//       .then(function(response) {
+//         return response.json()
+//       }).then(function(geojson) {
+//         L.geoJSON(geojson, {
+//             pointToLayer: function (feature, latlng) {
+//                 var marker = L.circleMarker(latlng, geojsonMarkerOptions_jachthaven);
+//                 marker.bindPopup(feature.properties.Naam);
+//                 return marker;}  
+//         }).addTo(map)
+//       }).catch(function(err) {
+//         console.error(err)
+//       })        
 
 // add: all properties including label (! some properties have spaces in label name)
 // cluster markers                
