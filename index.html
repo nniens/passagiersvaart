@@ -68,7 +68,7 @@ function onEachFeature(feature, layer) {
     }
 }
 
-var openafstap = L.geoJSON(false)
+var openafstap = L.geoJSON(null)
 // Add geojson 'op- en afstapplaatsen'
 fetch('https://api.data.amsterdam.nl/dcatd/datasets/hr5OD_Xsn6ri8w/purls/1')
       .then(function(response) {
