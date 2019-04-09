@@ -73,7 +73,7 @@ function onEachFeature(feature, layer) {
       .then(function(response) {
         return response.json()
       }).then(function(geojson) {
-        L.geoJSON(geojson, {
+        var openafstap = L.geoJSON(geojson, {
             pointToLayer: function (feature, latlng) {
                 var marker = L.circleMarker(latlng, geojsonMarkerOptions_openaf);
                 marker.bindPopup('</h1><p>Type: '.bold() + feature.properties.Type + "</strong><br/> Locatie: ".bold() + feature.properties.Locatie);
@@ -85,7 +85,10 @@ function onEachFeature(feature, layer) {
             //     }
             //     layer.bindPopup(popupcontent.join("<br />"));
             // }
-        }).addTo(map)
+        });
+        var clusters = L.markerClusterGroup();
+        clusters.addLayer(openafstap);
+        map.addLayer(clusters);
       }).catch(function(err) {
         console.error(err)
       })
@@ -95,15 +98,15 @@ fetch('https://api.data.amsterdam.nl/dcatd/datasets/hr5OD_Xsn6ri8w/purls/2')
       .then(function(response) {
         return response.json()
       }).then(function(geojson) {
-        L.geoJSON(geojson, {
+        var ligplaats = L.geoJSON(geojson, {
             pointToLayer: function (feature, latlng) {
                 var marker = L.circleMarker(latlng, geojsonMarkerOptions_ligplaats);
                 marker.bindPopup(feature.properties.Locatie);
                 return marker;}  
-        }).addTo(map)
-        // ;var clusters = L.markerClusterGroup();
-        // clusters.addLayer(ligplaats);
-        // map.addLayer(clusters);
+        });
+        var clusters = L.markerClusterGroup();
+        clusters.addLayer(ligplaats);
+        map.addLayer(clusters);
       }).catch(function(err) {
         console.error(err)
       })
@@ -113,33 +116,19 @@ fetch('https://api.data.amsterdam.nl/dcatd/datasets/hr5OD_Xsn6ri8w/purls/3')
       .then(function(response) {
         return response.json()
       }).then(function(geojson) {
-        var jacht = L.geoJSON(geojson, {
+        var jachthaven = L.geoJSON(geojson, {
             pointToLayer: function (feature, latlng) {
                 var marker = L.circleMarker(latlng, geojsonMarkerOptions_jachthaven);
                 marker.bindPopup(feature.properties.Naam);
                 return marker;}  
         });
         var clusters = L.markerClusterGroup();
-        clusters.addLayer(jacht);
+        clusters.addLayer(jachthaven);
         map.addLayer(clusters);
       }).catch(function(err) {
         console.error(err)
       })  
-
-// // Add geojson 'Jachthaven'
-// fetch('https://api.data.amsterdam.nl/dcatd/datasets/hr5OD_Xsn6ri8w/purls/3')
-//       .then(function(response) {
-//         return response.json()
-//       }).then(function(geojson) {
-//         L.geoJSON(geojson, {
-//             pointToLayer: function (feature, latlng) {
-//                 var marker = L.circleMarker(latlng, geojsonMarkerOptions_jachthaven);
-//                 marker.bindPopup(feature.properties.Naam);
-//                 return marker;}  
-//         }).addTo(map)
-//       }).catch(function(err) {
-//         console.error(err)
-//       })        
+ 
 
 // add: all properties including label (! some properties have spaces in label name)
 // cluster markers                
