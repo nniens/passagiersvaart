@@ -86,9 +86,9 @@ function onEachFeature(feature, layer) {
             //     layer.bindPopup(popupcontent.join("<br />"));
             // }
         });
-        var clusters = L.markerClusterGroup();
+        var clusters_o = L.markerClusterGroup();
         clusters.addLayer(openafstap);
-        map.addLayer(clusters);
+        map.addLayer(clusters_o);
       }).catch(function(err) {
         console.error(err)
       })
@@ -129,7 +129,7 @@ fetch('https://api.data.amsterdam.nl/dcatd/datasets/hr5OD_Xsn6ri8w/purls/3')
         console.error(err)
       })  
  
-
+      // L.control.layers(baseMaps, overlayMaps).addTo(map);
 // add: all properties including label (! some properties have spaces in label name)
 // cluster markers                
   </script>
