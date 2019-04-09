@@ -86,9 +86,9 @@ function onEachFeature(feature, layer) {
             //     layer.bindPopup(popupcontent.join("<br />"));
             // }
         });
-        var clusters_op = L.markerClusterGroup();
-        clusters_op.addLayer(openafstap);
-        map.addLayer(clusters_op);
+        var clusters = L.markerClusterGroup();
+        clusters.addLayer(openafstap);
+        map.addLayer(clusters);
       }).catch(function(err) {
         console.error(err)
       })
@@ -128,8 +128,13 @@ fetch('https://api.data.amsterdam.nl/dcatd/datasets/hr5OD_Xsn6ri8w/purls/3')
       }).catch(function(err) {
         console.error(err)
       })  
- 
-      // L.control.layers(baseMaps, overlayMaps).addTo(map);
+var overlayMaps = {
+  "openaf": openafstap,
+  "ligplaats": ligplaats
+  "jachthaven": jachthaven
+};
+L.control.layers(null, overlayMaps).addTo(map);
+
 // add: all properties including label (! some properties have spaces in label name)
 // cluster markers                
   </script>
