@@ -87,7 +87,7 @@ function onEachFeature(feature, layer) {
             // }
         });
         var clusters_o = L.markerClusterGroup();
-        clusters.addLayer(openafstap);
+        cluster_o.addLayer(openafstap);
         map.addLayer(clusters_o);
       }).catch(function(err) {
         console.error(err)
