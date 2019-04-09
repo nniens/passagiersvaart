@@ -80,7 +80,7 @@ fetch('https://api.data.amsterdam.nl/dcatd/datasets/hr5OD_Xsn6ri8w/purls/1')
                 marker.bindPopup('</h1><p>Type: '.bold() + feature.properties.Type + "</strong><br/> Locatie: ".bold() + feature.properties.Locatie);
                 return marker;}  
         });
-        open.addData(openafstap)
+        openafstap.addData(openafstap)
       }).catch(function(err) {
         console.error(err)
       })
@@ -152,7 +152,8 @@ fetch('https://api.data.amsterdam.nl/dcatd/datasets/hr5OD_Xsn6ri8w/purls/3')
       })  
 
 // add: all properties including label (! some properties have spaces in label name)
-// cluster markers                
+// cluster markers for each source separately     
+// overlay for clusters instead of markers           
   </script>
 </body>
 </html>
