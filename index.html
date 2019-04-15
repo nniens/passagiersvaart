@@ -153,7 +153,11 @@ fetch('https://api.data.amsterdam.nl/dcatd/datasets/hr5OD_Xsn6ri8w/purls/2')
         //   "ligplaatsen": ligplaats
         // };
         // L.control.layers(null, overlayMaps).addTo(map);
-        var clusters = L.markerClusterGroup();
+        var clusters = L.markerClusterGroup(
+          {disableClusteringAtZoom: 19,
+          spiderfyOnMaxZoom: false,
+          maxClusterRadius: 100}
+        );
         clusters.addLayer(ligplaats);
         map.addLayer(clusters);
       }).catch(function(err) {
