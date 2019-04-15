@@ -68,23 +68,39 @@ function onEachFeature(feature, layer) {
     }
 }
 
-var openafstap_layer = L.geoJSON()
+// var openafstap_layer = L.geoJSON()
+// // Add geojson 'op- en afstapplaatsen'
+// fetch('https://api.data.amsterdam.nl/dcatd/datasets/hr5OD_Xsn6ri8w/purls/1')
+//       .then(function(response) {
+//         return response.json()
+//       }).then(function(geojson) {
+//         openafstap_layer.addData(L.geoJSON(geojson, {
+//             pointToLayer: function (feature, latlng) {
+//                 var marker = L.circleMarker(latlng, geojsonMarkerOptions_openaf);
+//                 marker.bindPopup('</h1><p>Type: '.bold() + feature.properties.Type + "</strong><br/> Locatie: ".bold() + feature.properties.Locatie);
+//                 return marker;}  
+//         }));
+//         //openafstap_layer.addData(openafstap)
+//       }).catch(function(err) {
+//         console.error(err)
+//       })
+// openafstap_layer.addTo(map)
+
+
 // Add geojson 'op- en afstapplaatsen'
 fetch('https://api.data.amsterdam.nl/dcatd/datasets/hr5OD_Xsn6ri8w/purls/1')
       .then(function(response) {
         return response.json()
       }).then(function(geojson) {
-        openafstap_layer.addData(L.geoJSON(geojson, {
+        var openafstap = L.geoJSON(geojson, {
             pointToLayer: function (feature, latlng) {
                 var marker = L.circleMarker(latlng, geojsonMarkerOptions_openaf);
                 marker.bindPopup('</h1><p>Type: '.bold() + feature.properties.Type + "</strong><br/> Locatie: ".bold() + feature.properties.Locatie);
                 return marker;}  
-        }));
-        //openafstap_layer.addData(openafstap)
+        }).addTo(map);        
       }).catch(function(err) {
         console.error(err)
       })
-openafstap_layer.addTo(map)
 
 
 // // Add geojson 'op- en afstapplaatsen'
