@@ -101,6 +101,9 @@ fetch('https://api.data.amsterdam.nl/dcatd/datasets/hr5OD_Xsn6ri8w/purls/1')
       }).catch(function(err) {
         console.error(err)
       })
+var clusters = L.markerClusterGroup();
+clusters.addLayer(openafstap);
+map.addLayer(clusters);
 
 
 // // Add geojson 'op- en afstapplaatsen'
@@ -171,7 +174,8 @@ fetch('https://api.data.amsterdam.nl/dcatd/datasets/hr5OD_Xsn6ri8w/purls/3')
 
 // add: all properties including label (! some properties have spaces in label name)
 // cluster markers for each source separately     
-// overlay for clusters instead of markers           
+// overlay for clusters instead of markers      
+// ! markercluster misplaces geopoints     
   </script>
 </body>
 </html>
