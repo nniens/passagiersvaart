@@ -128,8 +128,8 @@ fetch('https://api.data.amsterdam.nl/dcatd/datasets/hr5OD_Xsn6ri8w/purls/1')
             // }
         });
         var clusters = L.markerClusterGroup(
-          disableClusteringAtZoom: 19,
-          maxClusterRadius: 100);
+          {disableClusteringAtZoom: 19,
+          maxClusterRadius: 100});
         clusters.addLayer(openafstap);
         map.addLayer(clusters);
       }).catch(function(err) {
