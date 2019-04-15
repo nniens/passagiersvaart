@@ -72,7 +72,7 @@ function onEachFeature(feature, layer) {
     }
 }
 
-// var openafstap_layer = L.geoJSON()
+var openafstap_layer = L.geoJSON()
 // Add geojson 'op- en afstapplaatsen'
 fetch('https://api.data.amsterdam.nl/dcatd/datasets/hr5OD_Xsn6ri8w/purls/1')
       .then(function(response) {
@@ -84,7 +84,6 @@ fetch('https://api.data.amsterdam.nl/dcatd/datasets/hr5OD_Xsn6ri8w/purls/1')
                 marker.bindPopup('</h1><p>Type: '.bold() + feature.properties.Type + "</strong><br/> Locatie: ".bold() + feature.properties.Locatie);
                 return marker;}  
         });
-        //openafstap_layer.addData(openafstap)
       }).catch(function(err) {
         console.error(err)
       })
